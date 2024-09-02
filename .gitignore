@@ -1,0 +1,72 @@
+/node_modules# .gitignore for a project with chatapp and client directories
+
+# Node modules
+node_modules/
+client/node_modules/
+server/node_modules/
+
+
+# Logs
+*.log
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist/
+build/
+
+# Dependency directories
+jspm_packages/
+bower_components/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Miscellaneous
+*.sublime-workspace
+*.sublime-project
+*.tgz
+*.gz
+*.zip
+*.rar
+
+# Test and coverage
+coverage/
+*.lcov
+
+# Yarn and npm logs
+.yarn-integrity
+.yarn-cache/
+package-lock.json
+yarn.lock
+
+# Temporary files
+*.tmp
+*.bak
+
+# NPM and Yarn lock files
+package-lock.json
+yarn.lock
+
+# Static files
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.svg
+
+# Others
+*.pem
+*.p12
+*.key
+*.crt
