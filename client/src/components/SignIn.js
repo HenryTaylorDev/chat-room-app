@@ -1,22 +1,21 @@
-// SignIn.js
 import React, { useState } from "react";
-import { auth } from "../firebase"; // Import the initialized Firebase Authentication service
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      // User signed in successfully
-      alert("Sign-in successful");
+      navigate("/");
     } catch (err) {
-      // Handle Errors here.
-      setError(err.message);
+      console.error("Error signing in:", err.message);
+      alert(err.message);
     }
   };
 
@@ -24,26 +23,19 @@ const SignIn = () => {
     <div>
       <h2>Sign In</h2>
       <form onSubmit={handleSignIn}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
+        <input
+          type="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Email"
+        />
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Password"
+        />
         <button type="submit">Sign In</button>
-        {error && <p style={{ color: "red" }}>{error}</p>}
       </form>
     </div>
   );
